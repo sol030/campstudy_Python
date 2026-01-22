@@ -2,7 +2,7 @@
 import pandas as pd
 pd.__version__
 
-
+ 
 ```
 
 
@@ -11,6 +11,47 @@ pd.__version__
     '2.3.3'
 
 
+
+* 오늘 실습의 전체 시나리오
+    * 동네 카페 사장에게서 **CSV 형태의 매출 데이터**를 전달받음
+    * 데이터는 데이터베이스(DB)가 아닌 **파일 형태**로 주어짐
+    * 실제 실무에서는 DB 직접 접근보다 CSV / Excel / JSON 파일을 받는 경우가 훨씬 많음
+    * 이 데이터는 분석이 바로 불가능할 정도로 **지저분한 상태**임
+
+---
+
+* 왜 전처리가 중요한가
+    * 지저분한 데이터를 그대로 분석하거나 머신러닝에 사용하면 결과 품질이 급격히 떨어짐
+    * 전처리는 데이터를 `분석 가능한 상태`로 만드는 작업
+    * 전처리는 성능 개선 방법 중 가장 직접적이고 효과적인 방법
+
+---
+
+* 실습 데이터의 원형 구조
+    * 원본 데이터는 `list` 안에 `dict`가 여러 개 들어 있는 형태
+    * 이 구조는 테이블 데이터를 파이썬 기본 자료형으로 표현하는 가장 대표적인 방식
+
+    * 예시 개념
+        * 리스트 → 테이블 전체
+        * 딕셔너리 하나 → 레코드(행)
+        * 딕셔너리의 key → 컬럼
+
+---
+
+* pandas란 무엇인가
+    * 파이썬에서 **엑셀/테이블 형태 데이터**를 다루기 위한 핵심 라이브러리
+    * SQL 테이블과 매우 유사한 사고방식을 가짐
+    * DataFrame은 SQL의 테이블 개념과 거의 동일함
+    
+---
+
+* 오늘 실습에서 다루는 핵심 목표
+    * pandas 라이브러리를 사용해 데이터 불러오기
+    * pandas의 핵심 구조인 **Series / DataFrame 이해**
+    * 컬럼 단위 데이터 타입 확인 및 정리
+    * 결측치(NaN) 확인 및 처리
+    * 파생 컬럼(feature) 생성
+    * 전처리 전체 프로세스를 한 번 끝까지 경험
 
 
 ```python
@@ -128,6 +169,18 @@ df
 - 수량이 문자열 "2"로 들어간 것도 있고 None도 있음
 - paid가 TRUE/True/문자열/불리언 섞임
 
+* DataFrame 기본 확인 메서드
+    * `head()`
+        * 상위 n개 행 확인 (기본 5개)
+        * SQL의 LIMIT과 유사
+    * `tail()`
+        * 하위 n개 행 확인
+    * `shape`
+        * (행 개수, 열 개수)
+        * 메서드가 아닌 **속성**
+    * `columns`
+        * 컬럼 목록 반환
+
 
 ```python
 #Series와 DataFrame 기본 구조 + dtype 이해
@@ -178,6 +231,14 @@ df.columns
 
 5) 결측치/널 값: NaN, None
 
+* Series vs DataFrame
+    * Series
+        * 컬럼이 1개인 데이터 구조
+        * 인덱스 + 값으로 구성됨
+    * DataFrame
+        * Series 여러 개가 모인 구조
+        * 행(row)과 열(column)을 모두 가짐
+
 
 ```python
 ###데이터 구조 보기!! (반드시
@@ -203,6 +264,11 @@ df.dtypes   #dtype 확인
 
 
 
+* 데이터 타입 문제
+    * pandas는 컬럼 단위로 데이터 타입을 가짐
+    * 원본 데이터가 지저분하면 대부분 `object` 타입으로 인식됨
+    * object 타입은 대부분 문자열(str)을 의미
+
 
 ```python
 df.isna().sum()     #결측치 확인
@@ -224,6 +290,23 @@ df.isna().sum()     #결측치 확인
     paid     0
     dtype: int64
 
+
+
+* 결측치(NaN)
+    * 데이터가 비어 있는 상태
+    * DB의 NULL과 동일한 개념
+    * `isna()` 메서드로 확인 가능
+
+    * isna() 결과
+        * True → 결측치
+        * False → 정상 값
+
+---
+
+* 결측치 개수 세기
+    * `df.isna().sum()`
+    * True는 1, False는 0으로 계산됨
+    * 컬럼별 결측치 개수를 빠르게 확인 가능
 
 
 
@@ -248,6 +331,16 @@ df["date"]
     Name: date, dtype: datetime64[ns]
 
 
+
+* 날짜 데이터 전처리
+    * 날짜 형식이 제각각이면 pandas가 날짜로 인식하지 못함
+    * `pd.to_datetime()` 사용
+    * `errors='coerce'`
+        * 변환 불가능한 값은 NaT로 강제 변환
+
+    * pandas 2.x / Python 3.13 환경에서는
+        * 날짜 포맷이 섞여 있으면 변환 실패 가능
+        * 이때 `format='mixed'` 옵션 사용
 
 
 ```python
@@ -279,6 +372,20 @@ df["price"]
     Name: price, dtype: Int64
 
 
+
+* 문자열 → 숫자 전처리 (price 컬럼)
+    * 원, 콤마가 포함된 숫자는 문자열
+    * 숫자로 변환하기 전 반드시 문자 정리 필요
+
+    * 절차
+        * astype(str) → 문자열로 명시적 변환
+        * str.replace('원','')
+        * str.replace(',','')
+        * pd.to_numeric()
+---
+* 왜 문자열로 먼저 바꾸는가
+    * 문자열 메서드(str.replace)는 문자열에서만 사용 가능
+    * 숫자 타입에서는 replace 불가
 
 
 ```python
@@ -325,6 +432,11 @@ df["paid"]
 
 
 
+* Boolean 데이터 전처리 (paid)
+    * True / False 값이 대소문자 혼합
+    * 먼저 대문자로 통일
+    * 이후 Boolean 타입으로 변환
+
 
 ```python
 ##결측치 처리 (price나 qty가 없으면 매출 계산이 안 되니 “0으로 채운다”(간단방법))
@@ -343,6 +455,17 @@ df.isna().sum()
     dtype: int64
 
 
+
+* 결측치 채우기 (fillna)
+    * 분석 목적에 따라 전략 선택
+        * 0으로 채움
+        * 평균값
+        * 중앙값
+        * 최빈값
+        * 제거(drop)
+
+    * 이번 실습에서는 가장 단순한 방식
+        * price, qty → 0으로 채움
 
 
 ```python
@@ -462,6 +585,36 @@ Feature(피처) = 분석에 사용하는 컬럼(열)
 
 NaT는 “날짜 변환 실패/결측”이라는 뜻이라서, 원본 데이터에서 날짜가 한 행만 파싱이 안 된 상태임.
 
+* 컬럼 선택 문법
+    * `df[['price','qty']]`
+    * 바깥 대괄호 → DataFrame
+    * 안쪽 리스트 → 여러 컬럼 선택
+
+---
+
+* 파생 컬럼 생성 (feature engineering)
+    * 기존 컬럼을 활용해 새로운 컬럼 생성
+    * SQL의 `AS`와 동일한 개념
+
+    * 예
+        * sales = price * qty
+
+---
+
+* 전처리에서 가장 중요한 기준
+    * 분석 가능한 상태인가?
+    * 결측치가 제거되었는가?
+    * 데이터 타입이 명확한가?
+    * 불필요한 컬럼은 제거되었는가?
+
+---
+
+* 실무 팁
+    * 중간에 전처리 실수 발생 시
+        * 위에서부터 다시 실행
+        * DataFrame은 **상태가 누적**됨
+
+
 
 ```python
 #날짜 NaT 체크 & 해결
@@ -557,7 +710,7 @@ df.groupby("menu")["sales"].sum().plot(kind="bar")
 
 
     
-![png](01_python_cafe_files/01_python_cafe_18_1.png)
+![png](01_python_cafe_files/01_python_cafe_29_1.png)
     
 
 
@@ -843,6 +996,14 @@ df_json.head()
 </div>
 
 
+
+
+#오늘 실습의 핵심 요약 (요약이 아니라 기준점)
+* DataFrame 구조 이해
+* 컬럼 단위 사고
+* 전처리는 "정답"이 아니라 "전략"
+* 데이터는 항상 더럽다
+* 전처리는 데이터 분석의 시작
 
 
 ```python
@@ -2508,19 +2669,19 @@ plt.show()
 
 
     
-![png](01_python_cafe_files/01_python_cafe_48_0.png)
+![png](01_python_cafe_files/01_python_cafe_60_0.png)
     
 
 
 
     
-![png](01_python_cafe_files/01_python_cafe_48_1.png)
+![png](01_python_cafe_files/01_python_cafe_60_1.png)
     
 
 
 
     
-![png](01_python_cafe_files/01_python_cafe_48_2.png)
+![png](01_python_cafe_files/01_python_cafe_60_2.png)
     
 
 
