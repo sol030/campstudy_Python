@@ -1206,6 +1206,771 @@ sales, sales_sorted_by_value, daily, daily_sorted_by_index, qty_sum, qty_sum_sor
 - subset: 무엇을 기준으로 중복인지 판단할지
 - keep: 첫 번째를 남길지, 마지막을 남길지
 
+# 실습편
+
+
+```python
+import pandas as pd
+
+raw = [
+    {"date":"2026-01-01", "time":"09:10", "store":"A", "menu":"Americano", "price":"4,500원", "qty":"2", "paid":"TRUE"},
+    {"date":"2026/01/01", "time":"09:12", "store":"A", "menu":"Latte",     "price":"5000",   "qty":1,   "paid":"True"}, # /
+    {"date":"2026-01-02", "time":"12:30", "store":"A", "menu":"Latte",     "price":None,     "qty":2,   "paid":"FALSE"},
+    {"date":"2026-01-03", "time":"18:05", "store":"B", "menu":"Mocha",     "price":"5500",   "qty":None,"paid":True},
+    {"date":"2026-01-03", "time":"18:05", "store":"B", "menu":"Mocha",     "price":"5500",   "qty":None,"paid":True},  # 중복
+    {"date":"2026-01-04", "time":"08:55", "store":"B", "menu":"Americano ", "price":"4500",  "qty":"1", "paid":"TRUE"}, # 공백
+    {"date":"2026-01-04", "time":"08:58", "store":"A", "menu":"latte",     "price":"5,000",  "qty":"3", "paid":"TRUE"}, # 소문자
+]
+df = pd.DataFrame(raw)
+
+df
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>4,500원</td>
+      <td>2</td>
+      <td>TRUE</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026/01/01</td>
+      <td>09:12</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>5000</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2026-01-02</td>
+      <td>12:30</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>None</td>
+      <td>2</td>
+      <td>FALSE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2026-01-04</td>
+      <td>08:55</td>
+      <td>B</td>
+      <td>Americano</td>
+      <td>4500</td>
+      <td>1</td>
+      <td>TRUE</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2026-01-04</td>
+      <td>08:58</td>
+      <td>A</td>
+      <td>latte</td>
+      <td>5,000</td>
+      <td>3</td>
+      <td>TRUE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+df.shape
+df.info()
+df.describe(include="all")
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 7 entries, 0 to 6
+    Data columns (total 7 columns):
+     #   Column  Non-Null Count  Dtype 
+    ---  ------  --------------  ----- 
+     0   date    7 non-null      object
+     1   time    7 non-null      object
+     2   store   7 non-null      object
+     3   menu    7 non-null      object
+     4   price   6 non-null      object
+     5   qty     5 non-null      object
+     6   paid    7 non-null      object
+    dtypes: object(7)
+    memory usage: 524.0+ bytes
+    
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>2026-01-04</td>
+      <td>18:05</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>5500</td>
+      <td>2</td>
+      <td>TRUE</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+#실습 1: “한 행” 뽑기
+df.loc[0]      # 0번 인덱스 라벨
+df.iloc[0]     # 0번째 위치
+```
+
+
+
+
+    date     2026-01-01
+    time          09:10
+    store             A
+    menu      Americano
+    price        4,500원
+    qty               2
+    paid           TRUE
+    Name: 0, dtype: object
+
+
+
+
+```python
+#“행 범위” 슬라이싱 실수 포인트
+df.loc[0:2]    # 끝 포함
+df.iloc[0:2]   # 끝 미포함
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>4,500원</td>
+      <td>2</td>
+      <td>TRUE</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026/01/01</td>
+      <td>09:12</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>5000</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+#열 선택 실전: 필요한 컬럼만 남기기
+#오늘 회의용 테이블은 이 컬럼만 필요
+
+cols = ["date","time","store","menu","price","qty","paid"]
+df2 = df[cols].copy()
+df2.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>4,500원</td>
+      <td>2</td>
+      <td>TRUE</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026/01/01</td>
+      <td>09:12</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>5000</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2026-01-02</td>
+      <td>12:30</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>None</td>
+      <td>2</td>
+      <td>FALSE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+### 조건 필터링(불리언 인덱싱): “결제 완료 + A매장 + 오전”
+
+**규칙 1) & | ~ 는 괄호 필수**
+
+**규칙 2) 실무 패턴은 이거 하나: df.loc[조건, 컬럼]**
+
+
+```python
+#**Step 1) 먼저 paid 값을 통일(소문자/대문자/True 섞임)**
+
+df2["paid"] = df2["paid"].astype(str).str.strip().str.lower()
+df2["paid"].value_counts()
+
+#**Step 2) 결제 완료만 추출**
+
+cond_paid = df2["paid"].isin(["true"])
+paid_df = df2.loc[cond_paid]
+paid_df
+
+#**Step 3) A매장 + 오전(09시대)만 더 좁히기**
+
+cond_storeA = (df2["store"] == "A")
+cond_morning = df2["time"].str.startswith("09")
+
+df_morning_A = df2.loc[cond_paid & cond_storeA & cond_morning, ["date","time","store","menu","price","qty"]]
+df_morning_A
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>4,500원</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026/01/01</td>
+      <td>09:12</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>5000</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+#정렬: “메뉴별 판매수량 TOP”을 뽑을 준비
+df2.sort_values(by=["date","time"], ascending=[True, True]).head()
+#- sort_values = 값 기준 정렬
+#- sort_index = 인덱스 기준 정렬
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>4,500원</td>
+      <td>2</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2026-01-02</td>
+      <td>12:30</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>None</td>
+      <td>2</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2026-01-03</td>
+      <td>18:05</td>
+      <td>B</td>
+      <td>Mocha</td>
+      <td>5500</td>
+      <td>None</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2026-01-04</td>
+      <td>08:55</td>
+      <td>B</td>
+      <td>Americano</td>
+      <td>4500</td>
+      <td>1</td>
+      <td>true</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+#클리닝 기본기 4종 세트 (오늘의 하이라이트)
+
+#7-1) rename / drop: 컬럼명 정리(선택)
+df2 = df2.rename(columns={"qty":"quantity"})
+
+#7-2) 문자열 정리: menu 공백/대소문자 통일
+df2["menu"] = df2["menu"].astype(str).str.strip().str.title()
+df2["menu"].value_counts()
+
+#7-3) price 정리: “원”, “,” 제거하고 숫자로 만들기
+df2["price"] = (
+    df2["price"]
+    .astype(str)
+    .str.replace(",", "", regex=False)
+    .str.replace("원", "", regex=False)
+    .str.strip()
+)
+
+df2["price"] = pd.to_numeric(df2["price"], errors="coerce")
+df2["price"].isnull().sum()
+
+        #문자열 패턴에 따라 정규식(Regular Expression)을 사용할 수 있음
+df2["price"] = (
+    df2["price"]
+    .astype(str)
+    .str.replace(r"[^0-9]", "", regex=True)  # 숫자(0-9) 제외 전부 제거
+)
+
+df2["price"] = pd.to_numeric(df2["price"], errors="coerce")
+df2["price"].isnull().sum()
+
+#7-4) 결측치 처리: dropna vs fillna (전략 선택)
+#- 가격(price)이 비어 있으면 매출 계산이 안됨
+# 실무에서는 보통 2가지 선택:
+#    - **삭제(drop)**: 데이터가 적어도 괜찮고, 결측이 중요 변수면 제거
+#    - **대체(fill)**: 평균/중앙값/메뉴별 평균 등으로 대체
+
+# quantity도 숫자로 정리
+df2["quantity"] = pd.to_numeric(df2["quantity"], errors="coerce")
+
+# 핵심 변수 결측은 삭제(간단 버전)
+clean = df2.dropna(subset=["price","quantity"]).copy()
+clean.shape
+```
+
+
+
+
+    (4, 7)
+
+
+
+
+```python
+#중복 처리: duplicated / drop_duplicates
+clean.duplicated().sum()
+clean = clean.drop_duplicates(keep="first")
+clean.duplicated().sum()
+```
+
+
+
+
+    np.int64(0)
+
+
+
+
+```python
+#미니 결과물 만들기: “매출 컬럼 추가 + 회의용 테이블 정리”
+clean["sales"] = clean["price"] * clean["quantity"]
+
+meeting_table = clean.loc[:, ["date","time","store","menu","price","quantity","sales"]].sort_values(
+    by=["date","store","time"],
+    ascending=[True, True, True]
+)
+
+meeting_table
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time</th>
+      <th>store</th>
+      <th>menu</th>
+      <th>price</th>
+      <th>quantity</th>
+      <th>sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2026-01-01</td>
+      <td>09:10</td>
+      <td>A</td>
+      <td>Americano</td>
+      <td>45000.0</td>
+      <td>2.0</td>
+      <td>90000.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2026-01-04</td>
+      <td>08:58</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>50000.0</td>
+      <td>3.0</td>
+      <td>150000.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2026-01-04</td>
+      <td>08:55</td>
+      <td>B</td>
+      <td>Americano</td>
+      <td>45000.0</td>
+      <td>1.0</td>
+      <td>45000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2026/01/01</td>
+      <td>09:12</td>
+      <td>A</td>
+      <td>Latte</td>
+      <td>50000.0</td>
+      <td>1.0</td>
+      <td>50000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+#저장: 2회차 결과물을 파일로 남기기 (3회차를 위해 필수)
+meeting_table.to_csv("cafe_sales_clean_v1.csv", index=False, encoding="utf-8-sig")
+```
+
+**오늘 실습 팁**
+
+- 초보자 막히는 TOP3 지점
+    
+    **& | 괄호 누락loc 슬라이싱 끝 포함 vs iloc 끝 미포함to_numeric(errors="coerce")로 결측 생기는 이유 이해 못함**
+    
+    - & | 괄호 누락
+    - loc 슬라이싱 끝 포함 vs iloc 끝 미포함
+    - to_numeric(errors="coerce")로 결측 생기는 이유 이해 못함
+- 해결 예시
+    - “조건은 무조건 괄호로 감싸고 &로 묶자”
+    - “loc은 이름이라 끝 포함, iloc은 순서라 끝 미포함”
+    - “숫자로 바꿀 수 없는 값은 NaN으로 바뀌는 게 정상”
+
 
 ```python
 !python -m jupyter nbconvert --to markdown 02_python_indexing.ipynb
