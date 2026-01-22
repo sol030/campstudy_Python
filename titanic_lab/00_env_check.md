@@ -458,7 +458,8 @@ model.fit(X_train, y_train)
 
 
 
-<style>#sk-container-id-3 {
+<img width="293" height="514" alt="Image" src="https://github.com/user-attachments/assets/81df3f9f-643c-4748-88e1-a3e09b3a921e" />[](url)
+<style>#sk-container-id-5 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -475,7 +476,7 @@ model.fit(X_train, y_train)
   --sklearn-color-fitted-level-3: cornflowerblue;
 }
 
-#sk-container-id-3.light {
+#sk-container-id-5.light {
   /* Specific color for light theme */
   --sklearn-color-text-on-default-background: black;
   --sklearn-color-background: white;
@@ -483,22 +484,22 @@ model.fit(X_train, y_train)
   --sklearn-color-icon: #696969;
 }
 
-#sk-container-id-3.dark {
+#sk-container-id-5.dark {
   --sklearn-color-text-on-default-background: white;
   --sklearn-color-background: #111;
   --sklearn-color-border-box: white;
   --sklearn-color-icon: #878787;
 }
 
-#sk-container-id-3 {
+#sk-container-id-5 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-3 pre {
+#sk-container-id-5 pre {
   padding: 0;
 }
 
-#sk-container-id-3 input.sk-hidden--visually {
+#sk-container-id-5 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -510,7 +511,7 @@ model.fit(X_train, y_train)
   width: 1px;
 }
 
-#sk-container-id-3 div.sk-dashed-wrapped {
+#sk-container-id-5 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -518,7 +519,7 @@ model.fit(X_train, y_train)
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-3 div.sk-container {
+#sk-container-id-5 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -528,7 +529,7 @@ model.fit(X_train, y_train)
   position: relative;
 }
 
-#sk-container-id-3 div.sk-text-repr-fallback {
+#sk-container-id-5 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -544,14 +545,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-3 div.sk-parallel-item::after {
+#sk-container-id-5 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-3 div.sk-parallel {
+#sk-container-id-5 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -559,28 +560,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-3 div.sk-parallel-item {
+#sk-container-id-5 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-3 div.sk-parallel-item:first-child::after {
+#sk-container-id-5 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-3 div.sk-parallel-item:last-child::after {
+#sk-container-id-5 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-3 div.sk-parallel-item:only-child::after {
+#sk-container-id-5 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-3 div.sk-serial {
+#sk-container-id-5 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -598,14 +599,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-3 div.sk-toggleable {
+#sk-container-id-5 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-3 label.sk-toggleable__label {
+#sk-container-id-5 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -618,13 +619,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-3 label.sk-toggleable__label .caption {
+#sk-container-id-5 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+#sk-container-id-5 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -632,25 +633,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-3 div.sk-toggleable__content {
+#sk-container-id-5 div.sk-toggleable__content {
   display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content.fitted {
+#sk-container-id-5 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content pre {
+#sk-container-id-5 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -658,78 +659,78 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+#sk-container-id-5 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-5 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-5 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-3 div.sk-label label.sk-toggleable__label,
-#sk-container-id-3 div.sk-label label {
+#sk-container-id-5 div.sk-label label.sk-toggleable__label,
+#sk-container-id-5 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-5 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-3 div.sk-label label {
+#sk-container-id-5 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   line-height: 1.2em;
 }
 
-#sk-container-id-3 div.sk-label-container {
+#sk-container-id-5 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-3 div.sk-estimator {
+#sk-container-id-5 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -739,18 +740,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted {
+#sk-container-id-5 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-3 div.sk-estimator:hover {
+#sk-container-id-5 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted:hover {
+#sk-container-id-5 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -841,7 +842,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-3 a.estimator_doc_link {
+#sk-container-id-5 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -856,7 +857,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-3 a.estimator_doc_link.fitted {
+#sk-container-id-5 a.estimator_doc_link.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
@@ -864,14 +865,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 }
 
 /* On hover */
-#sk-container-id-3 a.estimator_doc_link:hover {
+#sk-container-id-5 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+#sk-container-id-5 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
@@ -1008,7 +1009,7 @@ a.param-doc-link::before {
     height: 14px;
     cursor: pointer;
 }
-</style><body><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+</style><body><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" checked><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -1357,7 +1358,7 @@ function forceTheme(elementId) {
     }
 }
 
-forceTheme('sk-container-id-3');</script></body>
+forceTheme('sk-container-id-5');</script></body>
 
 
 
@@ -1498,9 +1499,177 @@ print(f"Decision Tree Accuracy: {acc_dt:.4f}")
 
 ```
 
-    Logistic Regression Accuracy: 0.8045
-    Decision Tree Accuracy: 0.8324
+
+    ---------------------------------------------------------------------------
+
+    ValueError                                Traceback (most recent call last)
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\arrays\categorical.py:592, in Categorical.astype(self, dtype, copy)
+        591 try:
+    --> 592     new_cats = new_cats.astype(dtype=dtype, copy=copy)
+        593     fill_value = self.categories._na_value
     
+
+    ValueError: could not convert string to float: 'Low'
+
+    
+    During handling of the above exception, another exception occurred:
+    
+
+    ValueError                                Traceback (most recent call last)
+
+    Cell In[105], line 4
+          1 # [Mission 2] 모델 비교 (Logistic vs DecisionTree)
+          2 # 1. Logistic Regression (with AgeGroup)
+          3 model_lr = LogisticRegression(max_iter=1000)
+    ----> 4 model_lr.fit(X_train_m, y_train_m)
+          5 acc_lr = accuracy_score(y_test_m, model_lr.predict(X_test_m))
+          7 # 2. Decision Tree Classifier
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\sklearn\base.py:1336, in _fit_context.<locals>.decorator.<locals>.wrapper(estimator, *args, **kwargs)
+       1329     estimator._validate_params()
+       1331 with config_context(
+       1332     skip_parameter_validation=(
+       1333         prefer_skip_nested_validation or global_skip_validation
+       1334     )
+       1335 ):
+    -> 1336     return fit_method(estimator, *args, **kwargs)
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1191, in LogisticRegression.fit(self, X, y, sample_weight)
+       1188 else:
+       1189     _dtype = [np.float64, np.float32]
+    -> 1191 X, y = validate_data(
+       1192     self,
+       1193     X,
+       1194     y,
+       1195     accept_sparse="csr",
+       1196     dtype=_dtype,
+       1197     order="C",
+       1198     accept_large_sparse=solver not in ["liblinear", "sag", "saga"],
+       1199 )
+       1200 n_features = X.shape[1]
+       1201 check_classification_targets(y)
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\sklearn\utils\validation.py:2919, in validate_data(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)
+       2917         y = check_array(y, input_name="y", **check_y_params)
+       2918     else:
+    -> 2919         X, y = check_X_y(X, y, **check_params)
+       2920     out = X, y
+       2922 if not no_val_X and check_params.get("ensure_2d", True):
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\sklearn\utils\validation.py:1314, in check_X_y(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, ensure_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)
+       1309         estimator_name = _check_estimator_name(estimator)
+       1310     raise ValueError(
+       1311         f"{estimator_name} requires y to be passed, but the target y is None"
+       1312     )
+    -> 1314 X = check_array(
+       1315     X,
+       1316     accept_sparse=accept_sparse,
+       1317     accept_large_sparse=accept_large_sparse,
+       1318     dtype=dtype,
+       1319     order=order,
+       1320     copy=copy,
+       1321     force_writeable=force_writeable,
+       1322     ensure_all_finite=ensure_all_finite,
+       1323     ensure_2d=ensure_2d,
+       1324     allow_nd=allow_nd,
+       1325     ensure_min_samples=ensure_min_samples,
+       1326     ensure_min_features=ensure_min_features,
+       1327     estimator=estimator,
+       1328     input_name="X",
+       1329 )
+       1331 y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric, estimator=estimator)
+       1333 check_consistent_length(X, y)
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\sklearn\utils\validation.py:940, in check_array(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)
+        935 if pandas_requires_conversion:
+        936     # pandas dataframe requires conversion earlier to handle extension dtypes with
+        937     # nans
+        938     # Use the original dtype for conversion if dtype is None
+        939     new_dtype = dtype_orig if dtype is None else dtype
+    --> 940     array = array.astype(new_dtype)
+        941     # Since we converted here, we do not need to convert again later
+        942     dtype = None
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\generic.py:6665, in NDFrame.astype(self, dtype, copy, errors)
+       6659     results = [
+       6660         ser.astype(dtype, copy=copy, errors=errors) for _, ser in self.items()
+       6661     ]
+       6663 else:
+       6664     # else, only a single dtype is given
+    -> 6665     new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+       6666     res = self._constructor_from_mgr(new_data, axes=new_data.axes)
+       6667     return res.__finalize__(self, method="astype")
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\internals\managers.py:449, in BaseBlockManager.astype(self, dtype, copy, errors)
+        446 elif using_copy_on_write():
+        447     copy = False
+    --> 449 return self.apply(
+        450     "astype",
+        451     dtype=dtype,
+        452     copy=copy,
+        453     errors=errors,
+        454     using_cow=using_copy_on_write(),
+        455 )
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\internals\managers.py:363, in BaseBlockManager.apply(self, f, align_keys, **kwargs)
+        361         applied = b.apply(f, **kwargs)
+        362     else:
+    --> 363         applied = getattr(b, f)(**kwargs)
+        364     result_blocks = extend_blocks(applied, result_blocks)
+        366 out = type(self).from_blocks(result_blocks, self.axes)
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\internals\blocks.py:784, in Block.astype(self, dtype, copy, errors, using_cow, squeeze)
+        781         raise ValueError("Can not squeeze with more than one column.")
+        782     values = values[0, :]  # type: ignore[call-overload]
+    --> 784 new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+        786 new_values = maybe_coerce_values(new_values)
+        788 refs = None
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\dtypes\astype.py:237, in astype_array_safe(values, dtype, copy, errors)
+        234     dtype = dtype.numpy_dtype
+        236 try:
+    --> 237     new_values = astype_array(values, dtype, copy=copy)
+        238 except (ValueError, TypeError):
+        239     # e.g. _astype_nansafe can fail on object-dtype of strings
+        240     #  trying to convert to float
+        241     if errors == "ignore":
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\dtypes\astype.py:179, in astype_array(values, dtype, copy)
+        175     return values
+        177 if not isinstance(values, np.ndarray):
+        178     # i.e. ExtensionArray
+    --> 179     values = values.astype(dtype, copy=copy)
+        181 else:
+        182     values = _astype_nansafe(values, dtype, copy=copy)
+    
+
+    File d:\sonamu\campstudy_Python\.venv\Lib\site-packages\pandas\core\arrays\categorical.py:603, in Categorical.astype(self, dtype, copy)
+        598     except (
+        599         TypeError,  # downstream error msg for CategoricalIndex is misleading
+        600         ValueError,
+        601     ):
+        602         msg = f"Cannot cast {self.categories.dtype} dtype to {dtype}"
+    --> 603         raise ValueError(msg)
+        605     result = take_nd(
+        606         new_cats, ensure_platform_int(self._codes), fill_value=fill_value
+        607     )
+        609 return result
+    
+
+    ValueError: Cannot cast object dtype to float64
+
 
 
 ```python
