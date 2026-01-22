@@ -585,6 +585,81 @@ check.head()
     * True/False 값을 활용해 비율 계산 가능
     * 0/1로 변환 후 평균 계산 가능
 
+### 데이터 전처리 단계 총집합
+
+* **데이터 읽기**
+    * CSV, Excel, JSON 등 다양한 포맷 읽기
+        ```python
+        import pandas as pd
+        df = pd.read_csv('data.csv', encoding='utf-8')
+        ```
+    * 구분자, 인코딩 옵션 확인 (`sep`, `encoding`)
+
+* **결측치 처리**
+    * 확인: 
+        ```python
+        df.isna().sum()
+        df.info()
+        ```
+    * 제거: `dropna()` → 필요 없는 행/열 제거
+    * 대체: `fillna()` → 평균, 중앙값, 특정값으로 채우기
+
+* **데이터 타입 변환**
+    * 숫자 컬럼: 문자열 → 숫자
+        ```python
+        df['price'] = df['price'].str.replace('원','').str.replace(',','')
+        df['price'] = pd.to_numeric(df['price'])
+        ```
+    * 날짜 컬럼: 문자열 → datetime
+        ```python
+        df['date'] = pd.to_datetime(df['date'], errors='coerce')
+        ```
+        * 변환 불가능 시 NaT 처리
+        * 여러 포맷 혼합 시 pandas 2.x `format='mixed`
+    * 범주형/카테고리: `astype('category')` → 메모리 절약, groupby 효율화
+
+* **문자열 정리**
+    * 공백 제거: `str.strip()`
+    * 불필요 문자 제거/치환: `str.replace()`
+    * 소문자/대문자 통일: `str.lower()`, `str.upper()`
+
+* **중복 데이터 처리**
+    * 확인: `df.duplicated()`
+    * 제거: `df.drop_duplicates()`
+
+* **이상치/범위 체크**
+    * 시각화: boxplot, hist
+    * 수치 범위 확인: `df.describe()`, min/max
+    * 필요 시 제거 또는 대체
+
+* **파생 변수 생성**
+    * 날짜 → 요일, 연월, 분기 등
+    * 계산: 가격 × 수량 → 총액
+    * 범주형 → 그룹화/라벨링
+
+* **데이터 요약/집계**
+    * `groupby()` + `agg()` → 카테고리별 합계/평균
+    * `pivot_table()` → 교차표 형태로 요약
+    * `value_counts()` → 범주별 빈도
+
+* **정렬**
+    * `sort_values()` → 특정 컬럼 기준 오름차순/내림차순
+    * 다중 컬럼 정렬 가능
+
+* **시각화**
+    * 분포 확인: `hist()`, `boxplot()`
+    * 변수 관계 확인: `scatter()`, `line()`
+    * 범주형 비교: `barplot()`, `countplot()`
+
+* **데이터 저장**
+    * CSV/Excel 등으로 출력
+        ```python
+        df.to_csv('clean_data.csv', index=False)
+        df.to_excel('clean_data.xlsx', index=False)
+        ```
+    * 분석 중간 단계 저장 → 재사용 가능
+
+
 # 추가 실습
 
 
