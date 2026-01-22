@@ -2415,6 +2415,8 @@ print(df_json.dtypes)
     paid       bool
     dtype: object
     
+
+    
     === Excel로 읽은 df ===
              date       menu  price  qty   paid
     0  2026-01-01  Americano   4500    2   True
