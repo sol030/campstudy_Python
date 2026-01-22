@@ -128,9 +128,102 @@ df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])    #Embarked �
 ##불필요한 컬럼 제거 (처리 난이도가 높은 열은 빼고 간단히)
 drop_cols = ["PassengerId", "Name", "Ticket", "Cabin"]  #Cabin은 결측치가 많아서 제외
 df = df.drop(columns=drop_cols) #Name/Ticket은 고급 피처 엔지니어링에서 다룸(초급 생략)
-
+df.head()
 #결측치 처리는 모델 성능과 안정성에 큰 영향
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -395,7 +488,7 @@ df["AgeGroup"] = pd.cut(
 df.groupby("AgeGroup")["Survived"].mean()
 ```
 
-    C:\Users\user\AppData\Local\Temp\ipykernel_7816\549538728.py:9: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+    C:\Users\user\AppData\Local\Temp\ipykernel_16132\549538728.py:9: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
       df.groupby("AgeGroup")["Survived"].mean()
     
 
@@ -457,8 +550,7 @@ model.fit(X_train, y_train)
 
 
 
-<img width="293" height="514" alt="Image" src="https://github.com/user-attachments/assets/473442e1-f53f-4246-8175-4d2936e553a1" />
-<style>#sk-container-id-10
+<img width="293" height="514" alt="Image" src="https://github.com/user-attachments/assets/6bf172c5-d1da-46a9-bb60-33e0eca2f2ca" />
 
 ```python
 print("절취선")
@@ -608,9 +700,9 @@ plt.ylabel("Survival Rate")
 plt.show()
 ```
 
-    C:\Users\user\AppData\Local\Temp\ipykernel_7816\906795447.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+    C:\Users\user\AppData\Local\Temp\ipykernel_16132\906795447.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
       fare_survival = df.groupby("FareGroup")["Survived"].mean()
-    C:\Users\user\AppData\Local\Temp\ipykernel_7816\906795447.py:6: FutureWarning: 
+    C:\Users\user\AppData\Local\Temp\ipykernel_16132\906795447.py:6: FutureWarning: 
     
     Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
     
@@ -652,8 +744,3 @@ Fare 구간화의 의미:
 * pd.qcut(): (Fare 구간화) 불규칙한 수치 데이터를 경영적 의미가 있는 '등급(Low to Very High)'으로 치환하여 인사이트를 명확하게 만든다. 통계적 분포를 볼 때 매우 굿.
 * DecisionTreeClassifier: 데이터의 선형성을 무시하고 비선형적 패턴을 찾는 데 탁월 / 데이터의 스케일에 민감하지 않고, 분석 결과를 시각적으로 설명하기 가장 좋은 모델
 * stratify=y: 데이터를 나눌 때 생존/사망 비율을 일정하게 유지해 주는 옵션으로, 통계적 편향을 막아주는 안전장치임
-
-
-```python
-!python -m jupyter nbconvert --to markdown 00_env_check_.ipynb
-```
