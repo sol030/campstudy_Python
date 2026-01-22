@@ -1965,7 +1965,7 @@ meeting_table.to_csv("cafe_sales_clean_v1.csv", index=False, encoding="utf-8-sig
     
     - & | 괄호 누락
     - loc 슬라이싱 끝 포함 vs iloc 끝 미포함
-    - to_numeric(errors="coerce")로 결측 생기는 이유 이해 못함
+    - to_numeric(errors="coerce")로 결측 생기는 이유 이해
 - 해결 예시
     - “조건은 무조건 괄호로 감싸고 &로 묶자”
     - “loc은 이름이라 끝 포함, iloc은 순서라 끝 미포함”
@@ -1975,7 +1975,3 @@ meeting_table.to_csv("cafe_sales_clean_v1.csv", index=False, encoding="utf-8-sig
 ```python
 !python -m jupyter nbconvert --to markdown 02_python_indexing.ipynb
 ```
-
-    [NbConvertApp] Converting notebook 02_python_indexing.ipynb to markdown
-    [NbConvertApp] Writing 35542 bytes to 02_python_indexing.md
-    
