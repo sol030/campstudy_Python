@@ -457,7 +457,7 @@ model.fit(X_train, y_train)
 
 
 
-<img width="293" height="514" alt="Image" src="https://github.com/user-attachments/assets/81df3f9f-643c-4748-88e1-a3e09b3a921e" />[](url)
+<img width="293" height="514" alt="Image" src="https://github.com/user-attachments/assets/473442e1-f53f-4246-8175-4d2936e553a1" />
 <style>#sk-container-id-10
 
 ```python
