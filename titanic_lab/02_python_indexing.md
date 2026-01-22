@@ -1959,9 +1959,9 @@ meeting_table.to_csv("cafe_sales_clean_v1.csv", index=False, encoding="utf-8-sig
 
 **오늘 실습 팁**
 
-- 초보자 막히는 TOP3 지점
+- 중요 TOP3 지점
     
-    **& | 괄호 누락loc 슬라이싱 끝 포함 vs iloc 끝 미포함to_numeric(errors="coerce")로 결측 생기는 이유 이해 못함**
+    **& | 괄호 누락loc 슬라이싱 끝 포함 vs iloc 끝 미포함to_numeric(errors="coerce")로 결측 생기는 이유 이해하기**
     
     - & | 괄호 누락
     - loc 슬라이싱 끝 포함 vs iloc 끝 미포함
@@ -1975,3 +1975,7 @@ meeting_table.to_csv("cafe_sales_clean_v1.csv", index=False, encoding="utf-8-sig
 ```python
 !python -m jupyter nbconvert --to markdown 02_python_indexing.ipynb
 ```
+
+    [NbConvertApp] Converting notebook 02_python_indexing.ipynb to markdown
+    [NbConvertApp] Writing 35542 bytes to 02_python_indexing.md
+    
