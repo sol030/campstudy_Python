@@ -1,0 +1,18 @@
+# 데이터 파일 (CSV, XLSX, JSON 모두 차단)
+*.csv
+*.xlsx
+*.json
+titanic_lab/data/
+titanic_lab/cafe_lab/data/
+
+# 주피터 노트북 임시 파일 및 시각화 결과 폴더
+.ipynb_checkpoints/
+__pycache__/
+
+# 설치 파일 및 가상환경
+get-pip.py
+.venv/
+.vscode/
+
+# 기타 잡동사니
+.DS_Store
